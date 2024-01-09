@@ -1,0 +1,27 @@
+{
+    "name": "ap24/package-for-agencies",
+    "description": "Verify secret key.",
+    "autoload": {
+        "psr-4": {
+            "Ap24\\PackageForAgencies\\": "/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ap24\\PackageForAgencies\\AgenciesServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Aldo",
+            "email": "aldopjetri42@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.1",
+        "../../vendor/laravel/framework": "^10.10"
+    }
+}
