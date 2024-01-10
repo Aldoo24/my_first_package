@@ -21,7 +21,7 @@ class AgenciesServiceProvider extends ServiceProvider
     public function boot(Gate $gate): void
     {
         $gate->define('view-app', function (User $user) {
-            $response = Http::post(config('agencies.verify_key'), [
+            $response = Http::post(config('agencies.check_key_activation'), [
                 'email' => $user->email
             ]);
             return $response->found();
