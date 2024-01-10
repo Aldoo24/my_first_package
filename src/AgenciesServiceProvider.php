@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Http;
 
 class AgenciesServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,10 @@ class AgenciesServiceProvider extends ServiceProvider
     public function boot(Gate $gate): void
     {
         $gate->define('view-app', function (User $user) {
-            return DB::table('secret_keys')->where('user_id', $user->id)->where('activated', 1)->exists();
+            $response = Http::post(config('agencies.verify_key'), [
+                'email' => $user->email
+            ]);
+            return $response->found();
         });
 
         $this->loadViewsFrom(__DIR__ . '/views', 'verify-secret-key');
