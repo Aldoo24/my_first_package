@@ -24,6 +24,7 @@ class AgenciesServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/views', 'verify-secret-key');
 
         $this->publishes([
+            __DIR__ . '/config/agencies.php' => config_path('agencies.php'),
             __DIR__ . '/views' => resource_path('views/vendor/agency'),
             __DIR__ . '/middleware' => app_path('http/middleware')
         ]);
