@@ -13,7 +13,9 @@ class AgenciesServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/agencies.php', 'agencies'
+        );
     }
 
     public function boot(Gate $gate): void
