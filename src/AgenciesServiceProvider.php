@@ -25,7 +25,16 @@ class AgenciesServiceProvider extends ServiceProvider
             return $response->found();
         });
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $gate->define('enter-app', function (User $user) {
+            $response = Http::withHeaders([
+                'secret_key' => request('secretKey')
+            ])->post(config('agencies.verify_key'), [
+                'email' => $user->email
+            ]);
+
+            return $response->found();
+        });
+
         $this->loadViewsFrom(__DIR__ . '/views', 'verify-secret-key');
 
         $this->publishes([
@@ -33,7 +42,6 @@ class AgenciesServiceProvider extends ServiceProvider
             __DIR__ . '/config/agencies.php' => config_path('agencies.php'),
             __DIR__ . '/views' => resource_path('views/vendor/agency'),
             __DIR__ . '/middleware' => app_path('http/middleware'),
-            __DIR__ . '/controllers' => app_path('http/controllers')
         ]);
     }
 
