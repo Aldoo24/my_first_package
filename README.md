@@ -18,11 +18,16 @@ This package can be required with composer. Paste the following command in your 
 ```bash
   composer require ap24/package-for-agencies:dev-main
 ```
-After the package has been installed you may publish the view and the config file with the following command. 
+After the package has been installed, publish the package's config file where the api routes are found.  
     
 ```bash
-  php artisan vendor:publish --provider=Ap24\PackageForAgencies\AgenciesServiceProvider --force
+  php artisan vendor:publish --tag=agency-config --force
 ```
+You also may publish the views.
+```bash
+  php artisan vendor:publish --tag=agency-views --force
+```
+
 ## Usage/Examples
 
 Use the 'activateAccount' middleware to protect the routes you want. If the key is not activated the user will be redirected to the verification view. 
