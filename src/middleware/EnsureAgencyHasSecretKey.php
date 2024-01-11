@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use GuzzleHttp\Client\Client;
 
 class EnsureAgencyHasSecretKey
 {
@@ -16,10 +17,14 @@ class EnsureAgencyHasSecretKey
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Gate::denies('view-app')) {
+        $response = Http::post(config('agencies.check_key_activation'), [
+            'email' => auth()->user()->email ?? $request->email
+        ]);
+
+        if ($response->found()) {
+            return $next($request);
+        } else {
             return redirect(route('verify-key'));
         }
-
-        return $next($request);
     }
 }
