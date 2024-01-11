@@ -40,7 +40,7 @@ class AgenciesServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/public' => public_path('vendor/agencies'),
             __DIR__ . '/config/agencies.php' => config_path('agencies.php'),
-            __DIR__ . '/views' => resource_path('views/vendor/agency'),
+            __DIR__ . '/views' => resource_path('views/vendor/agencies'),
             __DIR__ . '/middleware' => app_path('http/middleware'),
         ]);
     }
