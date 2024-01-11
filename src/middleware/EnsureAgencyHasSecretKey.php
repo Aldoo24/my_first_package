@@ -1,12 +1,12 @@
 <?php
 
-namespace Ap24\PackageForAgencies\middleware;
+namespace Ap24\PackageForAgencies\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
-use GuzzleHttp\Client\Client;
 
 class EnsureAgencyHasSecretKey
 {

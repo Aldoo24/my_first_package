@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
-use Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey;
+use Ap24\PackageForAgencies\Middleware\EnsureAgencyHasSecretKey;
 
 class AgenciesServiceProvider extends ServiceProvider
 {
@@ -16,9 +16,9 @@ class AgenciesServiceProvider extends ServiceProvider
         //
     }
 
-    public function boot(): void
+    public function boot(\Illuminate\Routing\Router $router): void
     {
-        $this->app['router']->aliasMiddleware('activateAccount', EnsureAgencyHasSecretKey::class);
+        $router->aliasMiddleware('activateAccount', EnsureAgencyHasSecretKey::class);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/views', 'a24');
