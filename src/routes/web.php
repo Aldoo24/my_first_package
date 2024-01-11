@@ -6,4 +6,4 @@ Route::get('verify-key', function () {
     return view('vendor.agencies.verify-secret-key');
 })->name('verify-key');
 
-Route::post('verify-secret-key', [Ap24\PackageForAgencies\Controllers\ActivationController::class, 'activateKey'])->name('activate-key');
+Route::post('verify-secret-key', [Ap24\PackageForAgencies\ActivationController::class, 'activateKey'])->name('activate-key');
