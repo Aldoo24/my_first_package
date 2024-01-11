@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Routing\Router;
 
 class AgenciesServiceProvider extends ServiceProvider
 {
@@ -16,9 +15,9 @@ class AgenciesServiceProvider extends ServiceProvider
         //
     }
 
-    public function boot(Router $router): void
+    public function boot(): void
     {
-        $router->pushMiddlewareToGroup('activateAccount', \Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey::class);
+        $this->app['router']->aliasMiddleware('activateAccount', \Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey::class);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/views', 'a24');

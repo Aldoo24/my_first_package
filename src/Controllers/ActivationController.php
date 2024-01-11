@@ -2,7 +2,9 @@
 
 namespace Ap24\PackageForAgencies\Controllers;
 
-class ActivationController extends \App\Http\Controllers\Controller
+use App\Http\Controllers\Controller;
+
+class ActivationController extends Controller
 {
     public function activateKey()
     {
