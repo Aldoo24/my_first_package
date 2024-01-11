@@ -21,7 +21,7 @@ class AgenciesServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('activateAccount', \Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey::class);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/views', 'verify-secret-key');
+        $this->loadViewsFrom(__DIR__ . '/views', 'a24');
 
         $this->publishes([
             __DIR__ . '/views' => resource_path('views/vendor/agency'),
