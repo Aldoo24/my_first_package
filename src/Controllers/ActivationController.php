@@ -3,6 +3,7 @@
 namespace Ap24\PackageForAgencies\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class ActivationController extends Controller
 {
