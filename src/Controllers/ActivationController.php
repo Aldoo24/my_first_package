@@ -11,7 +11,7 @@ class ActivationController extends Controller
     {
         $response = Http::withHeaders([
             'secret_key' => request('secretKey')
-        ])->post(config('agencies.verify_key'), [
+        ])->post(config('agency.verify_key'), [
             'email' => request('email')
         ]);
 

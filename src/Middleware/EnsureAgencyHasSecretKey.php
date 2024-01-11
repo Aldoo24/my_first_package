@@ -17,7 +17,7 @@ class EnsureAgencyHasSecretKey
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $response = Http::post(config('agencies.check_key_activation'), [
+        $response = Http::post(config('agency.check_key_activation'), [
             'email' => auth()->user()->email ?? $request->email
         ]);
 
