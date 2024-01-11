@@ -18,7 +18,7 @@ class AgenciesServiceProvider extends ServiceProvider
 
     public function boot(Router $router): void
     {
-        $router->aliasMiddleware('activateAccount', Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey::class);
+        $router->pushMiddlewareToGroup('activateAccount', \Ap24\PackageForAgencies\middleware\EnsureAgencyHasSecretKey::class);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/views', 'verify-secret-key');

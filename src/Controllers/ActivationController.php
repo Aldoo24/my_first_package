@@ -1,8 +1,8 @@
 <?php
 
-namespace Ap24\PackageForAgencies;
+namespace Ap24\PackageForAgencies\Controllers;
 
-class ActivationController extends App\Http\Controllers\Controller
+class ActivationController extends \App\Http\Controllers\Controller
 {
     public function activateKey()
     {
