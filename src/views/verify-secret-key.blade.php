@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('verify-secret-key') }}">
                 @csrf
 
                 <div class="form-group">

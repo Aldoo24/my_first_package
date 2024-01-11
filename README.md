@@ -26,7 +26,7 @@ After the package has been installed you need to publish the files necessary for
 In your app/Http/Middleware folder a new middleware named EnsureAgencyHasSecretKey has been added. You need to change this middleware's namespace according to your project and register it in app/Http/Kernel.php in the 'middlewareAliases' array.
 ## Usage/Examples
 
-Create a route named 'verify-key' which returns the published blade file named 'verify-secret-key' in you views/vendor/agencies folder. Then create a route for the controller where you are going to verify the key and redirect the user. In your controller use the already loaded gate, for example:
+Create a route named 'verify-key' which returns the published blade file named 'verify-secret-key' in you views/vendor/agencies folder. Then create a route named 'verify-secret-key' for the controller method where you are going to verify the key and redirect the user. In your controller use the already loaded gate, for example:
 ```php
 if (Gate::allows(enter-app)) {
   //redirect the user
