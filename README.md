@@ -28,6 +28,10 @@ You also may publish the views.
   php artisan vendor:publish --tag=agency-views --force
 ```
 
+Add the middleware found in the package to the app/Http/Kernel.php file in the 'middlewareAliases' array. For example:
+```
+'activateAccount' => \Ap24\PackageForAgencies\Middleware\EnsureAgencyHasSecretKey::class,
+```
 ## Usage/Examples
 
 Use the 'activateAccount' middleware to protect the routes you want. If the key is not activated the user will be redirected to the verification view. 
