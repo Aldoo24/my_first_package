@@ -13,7 +13,7 @@ class ActivationController extends Controller
         $response = Http::withHeaders([
             'secret_key' => request('secretKey')
         ])->post(config('agency.verify_key'), [
-            'email' => request('email')
+            'email' => auth()->user()->email ?? request('email')
         ]);
 
         if ($response->found()) {
