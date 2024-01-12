@@ -17,7 +17,11 @@ class ActivationController extends Controller
         ]);
 
         if ($response->found()) {
-            return redirect(config('agency.redirect') ? route(config('agency.redirect')) : '/');
+            if (config('agency.redirect') === '/') {
+                return redirect('/');
+            } else {
+                return redirect(route(config('agency.redirect')));
+            }
         } else {
             return back()->with(['error' => 'Email or key is not correct!']);
         }
