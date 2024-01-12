@@ -17,7 +17,7 @@ class ActivationController extends Controller
         ]);
 
         if ($response->found()) {
-            return back()->with(['success' => 'Key was verified!']);
+            return redirect(route(config('agency.redirect')) ?? '/');
         } else {
             return back()->with(['error' => 'Email or key is not correct!']);
         }

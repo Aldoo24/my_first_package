@@ -122,10 +122,15 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="text" name="email">
-                    <label for="secretKey">Secret Key</label>
-                    <input id="secretKey" type="text" name="secretKey">
+                    @auth
+                        <label for="secretKey">Secret Key</label>
+                        <input id="secretKey" type="text" name="secretKey">
+                    @else
+                        <label for="email">Email</label>
+                        <input id="email" type="text" name="email">
+                        <label for="secretKey">Secret Key</label>
+                        <input id="secretKey" type="text" name="secretKey">
+                    @endauth
                 </div>
 
                 <div class="form-group">

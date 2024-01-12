@@ -34,6 +34,11 @@ Use the 'activateAccount' middleware to protect the routes you want. If the key 
 
 To uri for the verification view is 'verify-key'. If you want to return this view from your controller use 'ap24::verify-key'.
 
+If the verification is successful, the user will automatically be redirected home. If you wish the user is redirected somewhere else, in the published 'agency.php' config file, add to the array the route name you want pairing it with the 'redirect' key. Example: 
+```
+'redirect' => //The name of the route
+``` 
+
 **Note:** Make sure to include the email as a parameter in every request you use the middleware if you are not authenticated.
 
 
