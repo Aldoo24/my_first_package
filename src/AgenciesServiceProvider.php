@@ -2,10 +2,7 @@
 
 namespace Ap24\PackageForAgencies;
 
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Http;
 use Ap24\PackageForAgencies\Middleware\EnsureAgencyHasSecretKey;
 
 class AgenciesServiceProvider extends ServiceProvider
@@ -16,8 +13,9 @@ class AgenciesServiceProvider extends ServiceProvider
         //
     }
 
-    public function boot(\Illuminate\Routing\Router $router): void
+    public function boot(): void
     {
+        $router = $this->app['router'];
         $router->aliasMiddleware('activateAccount', EnsureAgencyHasSecretKey::class);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
